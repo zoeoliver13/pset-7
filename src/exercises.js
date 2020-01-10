@@ -20,24 +20,36 @@ function endsMeet(values, n) {
   if(values.length<n){
     return [];
   }
-  //use for loop
+  if(n%1!==0||n<0){
+    return [];
+  }
   else{
     return [
       n[0],
       n.pop()
     ]
   }
-
 }
 
-function difference(numbers) {
-  // write your code here
-}
+ function difference(numbers) {
+   var smallest_number = Math.min(numbers);
+   var largest_number = Math.max(numbers);
+     if (!numbers || numbers.length === 0) {
+       return undefined;
+     }
+     if(numbers.length<1){
+       return undefined;
+     }
+     if(Number.isNaN(numbers)){
+       return undefined;
+     }
+    else{
+      return [largest_number - smallest_number]
+    }
+  }
 
-function max(number) {
-  // write your code here
+function max(numbers) {
 }
-
 function middle(values) {
   // write your code here
 }
