@@ -203,14 +203,60 @@ function consecutive(numbers) {
     return false;
     }
    }
-  } 
+  }
 
 
 
 function balance(numbers) {
-  // write your code here
-  console.log("test");
-}
+  var num;
+  var sum;
+  var half = 0;
+  var otherHalf = 0;
+
+  if (!numbers || numbers.length === 0) {
+    return false;
+    num = false;
+  }
+  if (numbers.length < 2){
+    return false;
+    num = false;
+  }
+  if(Number.isNaN(numbers)){
+    return false;
+    num = false;
+  }
+  if(!isInteger(number)){
+    return false;
+    num = false;
+  }else {
+    for (let i = 0; i < numbers.length - 1; i++) {
+      if (Number.isInteger(numbers[i]) === false){
+          return false;
+          num = false;
+      }
+     }
+  for (let j = 0; j < numbers.length; j++){
+       otherHalf = otherHalf + numbers[j];
+     }
+   sum = otherHalf / 2;
+   if(otherHalf % 2 === 1) {
+       return false;
+       num = false;
+   }
+   for (let k= 0; w < numbers.length - 1; k++) {
+       half = half + numbers[k];
+       if (sum === sumHalf) {
+           return true;
+           num = true;
+       }
+   }
+   if (num === true) {
+       return true;
+   } else {
+       return false;
+   }
+  }
+ }
 
 function clumps(values) {
   // write your code here
