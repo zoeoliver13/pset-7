@@ -14,26 +14,40 @@ function commonEnd(a, b) {
 }
 
 function endsMeet(values, n) {
+  var array = [];
   if (!values || values.length === 0) {
-    return [];
+    return array;
   }
   if(values.length<n){
-    return [];
+    return array;
   }
   if(n%1!==0||n<0){
-    return [];
+    return array;
   }
-  else{
-    return [
-      n[0],
-      n.pop()
-    ]
-  }
+  else {
+      if (n === 0) {
+        return values;
+      } else {
+        for (let i = 0; i < n; i++) {
+          if (!(values[i] === undefined)) {
+            array.push(values[i]);
+          }
+        }
+        for (let i = n; i > 0; i--) {
+          if (!(values[values.length - i] === undefined)) {
+
+            array.push(values[values.length - i]);
+          }
+        }
+        return array;
+      }
+   }
 }
 
  function difference(numbers) {
-   var smallest_number = Math.min(numbers);
-   var largest_number = Math.max(numbers);
+   var smallest_number = Number(Math.min.apply(null, numbers));
+   var largest_number = Number(Math.max.apply(null, numbers));
+   var output = largest_number - smallest_number;
      if (!numbers || numbers.length === 0) {
        return undefined;
      }
@@ -44,7 +58,7 @@ function endsMeet(values, n) {
        return undefined;
      }
     else{
-      return [largest_number - smallest_number]
+      return output; 
     }
   }
 
