@@ -139,8 +139,24 @@ function increasing(numbers) {
 
 
 function everywhere(values, x) {
-  
-}
+   var is_true = true;
+  if (!values || values.length === 0) {
+    return false;
+  }
+  if (!x || x.length === 0) {
+    return false;
+  }
+  if (values.length < 1){
+    return false;
+  }
+  else{
+   console.log(values.lastIndexOf(x));
+   for (let i = values.lastIndexOf(x); i < values.length; i+=2){
+     (values[i]!==x)? is_true = false : is_true;
+   }
+   return is_true;
+    }
+   }
 
 function consecutive(numbers) {
   // write your code here
