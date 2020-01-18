@@ -139,7 +139,8 @@ function increasing(numbers) {
 
 
 function everywhere(values, x) {
-   var is_true = true;
+  var is_true = true;
+
   if (!values || values.length === 0) {
     return false;
   }
@@ -159,8 +160,52 @@ function everywhere(values, x) {
    }
 
 function consecutive(numbers) {
-  // write your code here
-}
+  var num;
+  var one;
+  var two;
+  var three;
+
+  if (!numbers || numbers.length === 0) {
+    return false;
+  }
+  if (numbers.length < 3){
+    return false;
+  }
+  if(Number.isNaN(numbers)){
+    return false;
+  }
+  if(!isInteger(number)){
+    return false
+  }
+  else{
+    for (let i = 0; i< numbers.length - 1; i++) {
+     if (Number.isInteger(numbers[i] !== true)) {
+       return false;
+       num = false;
+     }
+   }
+   for (let j = 0; j < numbers.length - 2; j++) {
+     three = numbers[j + 2];
+     two = numbers[j + 1];
+     one = numbers [j];
+
+   if (three % 2 === 0 && two % 2 === 0 && one % 2 === 0) {
+     return true;
+     num = true;
+   } else if (three % 2 === 1 && two % 2 === 1 && one % 2 === 1) {
+     return true;
+     num = true;
+   }
+  }
+  if (num == true) {
+    return true;
+  } else {
+    return false;
+    }
+   }
+  } 
+
+
 
 function balance(numbers) {
   // write your code here
