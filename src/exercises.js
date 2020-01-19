@@ -55,7 +55,7 @@ function endsMeet(values, n) {
      if(numbers.length<1){
        return undefined;
      }
-     if(Number.isNaN(numbers)){
+     if(numbers.some(isNaN)){
        return undefined;
      }
     else{
@@ -76,12 +76,12 @@ function max(numbers) {
   if (numbers.length % 2 === 0 || numbers.length < 3 ){
     return undefined;
   }
-  if (Number.isNaN(numbers)){
+  if (numbers.some(isNaN)){
     return undefined;
   }
   else{
     array.push(first_element, middle_element, last_element);
-    return largest;
+    return  Number(Math.max.apply(null, array));
   }
 }
 
@@ -111,16 +111,16 @@ function increasing(numbers) {
   if (numbers.length < 3){
     return false;
   }
-  if(Number.isNaN(numbers)){
+  if(numbers.some(isNaN)){
     return false;
   }
-  if(!isInteger(number)){
+  if(!Number.isInteger(number)){
     return false
   }
     for (i = 0; i < numbers.length; i++) {
       if (numbers[i] === last + 1) {
         last = numbers[i]
-         if (numbers[u + 1] === last + 1) {
+         if (numbers[i + 1] === last + 1) {
           return true;
           num = 1;
           break;
@@ -136,6 +136,7 @@ function increasing(numbers) {
     if (num === 0) {
       return false;
     }
+}
 
 
 function everywhere(values, x) {
@@ -304,4 +305,6 @@ module.exports = {
   consecutive,
   balance,
   clumps
+
 };
+
