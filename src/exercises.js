@@ -55,7 +55,7 @@ function endsMeet(values, n) {
      if(numbers.length<1){
        return undefined;
      }
-     if(Number.isNaN(numbers)){
+     if(numbers.some(isNaN)){
        return undefined;
      }
     else{
@@ -64,94 +64,75 @@ function endsMeet(values, n) {
   }
 
 function max(numbers) {
-  var first_element = numbers[0];
-  var middle_element = numbers[Math.floor(numbers.length/2)];
-  var last_element = numbers[numbers.length-1];
-  var array = [];
-  var largest = Number(Math.max.apply(null, array));
-
   if (!numbers || numbers.length === 0) {
     return undefined;
   }
   if (numbers.length % 2 === 0 || numbers.length < 3 ){
     return undefined;
   }
-  if (Number.isNaN(numbers)){
+  if (numbers.some(isNaN)){
     return undefined;
   }
   else{
+    var first_element = numbers[0];
+    var middle_element = numbers[Math.floor(numbers.length/2)];
+    var last_element = numbers[numbers.length-1];
+    var array = [];
+    var largest = Number(Math.max.apply(null, array));
     array.push(first_element, middle_element, last_element);
-    return largest;
+    return  Number(Math.max.apply(null, array));
   }
 }
 
 function middle(values) {
-  var middle = Math.floor(values.length/2);
-  var array = [];
 
   if (!values || values.length === 0) {
-    return undefined;
+    return [];
   }
-  if (numbers.length % 2 === 0 || numbers.length < 3 ){
-    return undefined;
+  if (values.length % 2 === 0 || values.length < 3 ){
+    return [];
   }
   else{
-    array.push(values[middle - 1], values[middle], values[middle + 1]);
+    var middle = Math.floor(values.length/2);
+    var array = [];
+    array.push(values[middle - 1], values[middle]);
     return array;
   }
 }
 
 function increasing(numbers) {
-  var num = 0;
-  var last = -1;
-
-  if (!numbers || numbers.length === 0) {
-    return false;
-  }
-  if (numbers.length < 3){
-    return false;
-  }
-  if(Number.isNaN(numbers)){
-    return false;
-  }
-  if(!isInteger(number)){
-    return false
-  }
-    for (i = 0; i < numbers.length; i++) {
-      if (numbers[i] === last + 1) {
-        last = numbers[i]
-         if (numbers[u + 1] === last + 1) {
-          return true;
-          num = 1;
-          break;
-        }
-        else {
-        last = -1;
+  if (numbers == undefined || numbers == []) {
+     return undefined;
+   } else if (numbers.length < 3 || numbers.some(isNaN)) {
+     return undefined;
+   } else {
+     for (let i = 1; i < numbers.length; i++) {
+       if ((numbers[i - 1] + 1) === numbers[i]) {
+         i++
+         if ((numbers[i - 1] + 1) === numbers[i]) {
+           return true;
+           break;
+         } else {
+           continue;
+         }
+       } else {
+         continue;
+       }
       }
-    }
-      else {
-        last = numbers[i];
-      }
-    }
-    if (num === 0) {
-      return false;
-    }
-
+     return false;
+   }
+  }
+//debug^ 
 
 function everywhere(values, x) {
-  var is_true = true;
-
   if (!values || values.length === 0) {
     return false;
   }
   if (!x || x.length === 0) {
     return false;
   }
-  if (values.length < 1){
-    return false;
-  }
   else{
-   console.log(values.lastIndexOf(x));
+   var is_true = true;
    for (let i = values.lastIndexOf(x); i < values.length; i+=2){
      (values[i]!==x)? is_true = false : is_true;
    }
@@ -165,17 +146,14 @@ function consecutive(numbers) {
   var two;
   var three;
 
-  if (!numbers || numbers.length === 0) {
+  if (!numbers) {
     return false;
   }
   if (numbers.length < 3){
     return false;
   }
-  if(Number.isNaN(numbers)){
+  if(numbers.some(isNaN)){
     return false;
-  }
-  if(!isInteger(number)){
-    return false
   }
   else{
     for (let i = 0; i< numbers.length - 1; i++) {
@@ -184,6 +162,7 @@ function consecutive(numbers) {
        num = false;
      }
    }
+
    for (let j = 0; j < numbers.length - 2; j++) {
      three = numbers[j + 2];
      two = numbers[j + 1];
@@ -213,21 +192,14 @@ function balance(numbers) {
   var half = 0;
   var otherHalf = 0;
 
-  if (!numbers || numbers.length === 0) {
+  if (!numbers) {
     return false;
-    num = false;
   }
-  if (numbers.length < 2){
+  if (numbers.length < 3){
     return false;
-    num = false;
   }
-  if(Number.isNaN(numbers)){
+  if(numbers.some(isNaN)){
     return false;
-    num = false;
-  }
-  if(!isInteger(number)){
-    return false;
-    num = false;
   }else {
     for (let i = 0; i < numbers.length - 1; i++) {
       if (Number.isInteger(numbers[i]) === false){
@@ -243,9 +215,9 @@ function balance(numbers) {
        return false;
        num = false;
    }
-   for (let k= 0; w < numbers.length - 1; k++) {
+   for (let k= 0; k < numbers.length - 1; k++) {
        half = half + numbers[k];
-       if (sum === sumHalf) {
+       if (sum === half) {
            return true;
            num = true;
        }
@@ -304,4 +276,5 @@ module.exports = {
   consecutive,
   balance,
   clumps
+
 };
