@@ -123,6 +123,41 @@ function increasing(numbers) {
    }
   }
 //debug^ 
+  var num = 0;
+  var last = -1;
+
+  if (!numbers || numbers.length === 0) {
+    return false;
+  }
+  if (numbers.length < 3){
+    return false;
+  }
+  if(numbers.some(isNaN)){
+    return false;
+  }
+  if(!Number.isInteger(number)){
+    return false
+  }
+    for (i = 0; i < numbers.length; i++) {
+      if (numbers[i] === last + 1) {
+        last = numbers[i]
+         if (numbers[i + 1] === last + 1) {
+          return true;
+          num = 1;
+          break;
+        }
+        else {
+        last = -1;
+      }
+    }
+      else {
+        last = numbers[i];
+      }
+    }
+    if (num === 0) {
+      return false;
+    }
+}
 
 function everywhere(values, x) {
   if (!values || values.length === 0) {
